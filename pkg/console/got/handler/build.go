@@ -36,7 +36,7 @@ func NewBuildFlags(gflags *GlobalFlags) (flags *BuildFlags) {
 	// Install
 	flags.Install = false
 	// Mode
-	flags.Mode = "exe"
+	flags.Mode = "binary"
 	// Output
 	flags.Output = "bin"
 	return
@@ -80,7 +80,7 @@ func OnBuildHandler(ctx context.Context, flags *BuildFlags, args []string) (err 
 	switch flags.Mode {
 	case "docker":
 		// not implemented
-	case "exe":
+	case "binary":
 		// Nothing to do
 	default:
 		break

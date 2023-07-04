@@ -30,9 +30,9 @@ func init() {
 	cmdc.Use = "cmd"
 	cmdc.Short = "Manage command"
 	cmdc.Long = `Command [cmd] can help us to install/remove the commands which in directory: ./cmd.`
-	cmdc.Example = `  vol cmd -i c1
-  vol cmd -i -p=c1 c2
-  vol cmd -r c1`
+	cmdc.Example = `  vol cmd --i c1
+  vol cmd --i -p=c1 c2
+  vol cmd --remove c1`
 	cmdc.Args = cobra.ExactArgs(1)
 	// Events
 	cmdc.RunE = func(cmd *cobra.Command, args []string) error {
@@ -41,7 +41,7 @@ func init() {
 	// Flags
 	if f := cmdc.Flags(); f != nil {
 		f.BoolVarP(&flags.Install, "install", "i", flags.Install, "install a command")
-		f.BoolVarP(&flags.Remove, "remove", "r", flags.Remove, "remove a command")
+		f.BoolVarP(&flags.Remove, "remove", "", flags.Remove, "remove a command")
 		f.StringVarP(&flags.Parent, "parent", "p", flags.Parent, "if there is no parent, the specified command is a first-level command, otherwise \nit is a second-level command")
 	}
 }
